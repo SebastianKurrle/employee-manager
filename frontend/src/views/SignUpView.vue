@@ -17,40 +17,40 @@
 
         if (password.value != password2.value) {
             errors.push({passwords : 'The passwords are not equal'})
-            return
-        }
+        } else {
+            const formData:object = {
+                username: username.value,
+                first_name: firstName.value,
+                last_name: lastName.value,
+                email: email.value,
+                password: password.value
+            }
 
-        const formData = {
-            username: username.value,
-            first_name: firstName.value,
-            last_name: lastName.value,
-            email: email.value,
-            password: password.value
-        }
+            axios
+                .post('/api/user/register/', formData)
+                .then(response => {
+                    
+                })
+                .catch(error => {
+                    console.log(error)
 
-        axios
-            .post('/api/user/register/', formData)
-            .then(response => {
-                
-            })
-            .catch(error => {
-                console.log(error)
-
-                if (error.response) {
-                    for (const property in error.response.data) {
-                        errors.push(
-                            `${property}: ${error.response.data[property]}`
-                        );
+                    if (error.response) {
+                        // Loops the server errors and push it in the errors array
+                        for (const property in error.response.data) {
+                            errors.push(
+                                `${property}: ${error.response.data[property]}`
+                            );
+                        }
                     }
-                }
-            })
+                })
+        }
 
-            username.value = ''
-            firstName.value = ''
-            lastName.value = ''
-            email.value = ''
-            password.value = ''
-            password2.value = ''
+        username.value = ''
+        firstName.value = ''
+        lastName.value = ''
+        email.value = ''
+        password.value = ''
+        password2.value = ''
     }
 </script>
 
@@ -79,7 +79,7 @@
                         <p v-for="error in errors">{{ error }}</p>
                     </div>
 
-                    <button class="bg-green-600 rounded-lg p-3 w-96">Sign Up</button>
+                    <button class="bg-green-600 rounded-lg p-3 w-96 hover:scale-110 duration-200">Sign Up</button>
                 </form>
             </div>
         </div>

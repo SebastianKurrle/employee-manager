@@ -1,5 +1,8 @@
 <script setup lang="ts">
     import { RouterLink } from 'vue-router';
+    import { useAuthenitacedStore } from '@/stores/authenticated';
+
+    const authenticatedStore = useAuthenitacedStore()
 </script>
 
 <template>
@@ -10,7 +13,7 @@
             <h2>Welcome</h2>
         </div>
 
-        <div class="mt-3">
+        <div class="mt-3" v-if="!authenticatedStore.authenticated">
             <RouterLink class="fancy" to="/sign-in">
                 <span class="top-key"></span>
                 <span class="text">Sign In</span>

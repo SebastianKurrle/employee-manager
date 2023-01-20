@@ -1,6 +1,23 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router'
+import { onBeforeMount } from 'vue';
+import { useAuthenitacedStore } from './stores/authenticated';
+import axios from 'axios';
 import Navbar from './components/Navbar.vue';
+
+const authenticatedStore = useAuthenitacedStore()
+
+onBeforeMount(() => {
+  authenticatedStore.setAuthenticated()
+  const token = authenticatedStore.token
+
+  if (token) {
+    axios.defaults.headers.common['Authorization'] = 'Token ' + token 
+  } else {
+    axios.defaults.headers.common['Authorization'] = ''
+  }
+})
+
 </script>
 
 <template>
