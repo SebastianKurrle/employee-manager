@@ -19,7 +19,7 @@ const router = createRouter({
       name: 'companies',
       component: CompaniesView
     },
-    
+
     {
       path: '/my-account',
       name: 'my-account',
