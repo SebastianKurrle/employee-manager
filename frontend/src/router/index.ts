@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import { useAuthenitacedStore } from '@/stores/authenticated'
 
 // Router views
 import HomeViewVue from '@/views/HomeView.vue'
@@ -7,8 +6,7 @@ import CompaniesView from '@/views/CompaniesView.vue'
 import MyAccountView from '@/views/MyAccountView.vue'
 import SignUpView from '@/views/SignUpView.vue'
 import SignInViewVue from '@/views/SignInView.vue'
-
-const authenticatedStore = useAuthenitacedStore()
+import { useAuthenitacedStore } from '@/stores/authenticated'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -31,20 +29,27 @@ const router = createRouter({
     {
       path: '/companies',
       name: 'companies',
-      component: CompaniesView
+      component: CompaniesView,
+      meta: {
+        requireLogin: true
+      },
     },
 
     {
       path: '/my-account',
       name: 'my-account',
-      component: MyAccountView
+      component: MyAccountView,
+      meta: {
+        requireLogin: true
+      },
     }
   ]
 })
 
 
-
 router.beforeEach((to, from, next) => {
+  const authenticatedStore = useAuthenitacedStore()
+
   if (to.matched.some(record => record.meta.requireLogin) && !authenticatedStore.authenticated) {
     next({name: 'sign-in', query: { to: to.path }})
   } else {

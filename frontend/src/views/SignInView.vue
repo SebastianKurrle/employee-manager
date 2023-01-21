@@ -2,6 +2,7 @@
     import { ref, reactive } from 'vue'
     import { useAuthenitacedStore } from '@/stores/authenticated';
     import axios from 'axios';
+    import router from '@/router';
 
     // Vars for sign in
     const username = ref('')
@@ -28,6 +29,9 @@
                 localStorage.setItem('username', response.data.user_info.username)
 
                 authenticatedStore.setAuthenticated()
+
+                const toPath = router.currentRoute.value.query.to || '/'
+                router.push(String(toPath))
             })
             .catch(error => {
                 if (error.response) {
