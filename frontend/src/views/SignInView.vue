@@ -3,6 +3,7 @@
     import { useAuthenitacedStore } from '@/stores/authenticated';
     import axios from 'axios';
     import router from '@/router';
+    import type { RouteLocationRaw } from 'vue-router';
 
     // Vars for sign in
     const username = ref('')
@@ -30,8 +31,9 @@
 
                 authenticatedStore.setAuthenticated()
 
-                const toPath = router.currentRoute.value.query.to || '/'
-                router.push(String(toPath))
+                // gets the path for the router
+                const toPath:RouteLocationRaw = String(router.currentRoute.value.query.to || '/')
+                router.push(toPath)
             })
             .catch(error => {
                 if (error.response) {

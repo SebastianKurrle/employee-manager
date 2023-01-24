@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import { useAuthenitacedStore } from '@/stores/authenticated'
 
 // Router views
 import HomeViewVue from '@/views/HomeView.vue'
@@ -6,7 +7,8 @@ import CompaniesView from '@/views/CompaniesView.vue'
 import MyAccountView from '@/views/MyAccountView.vue'
 import SignUpView from '@/views/SignUpView.vue'
 import SignInViewVue from '@/views/SignInView.vue'
-import { useAuthenitacedStore } from '@/stores/authenticated'
+import CreateCompanieView from '@/views/CreateCompanieView.vue'
+
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -39,6 +41,15 @@ const router = createRouter({
       path: '/my-account',
       name: 'my-account',
       component: MyAccountView,
+      meta: {
+        requireLogin: true
+      },
+    },
+
+    {
+      path: '/company/create',
+      name: 'create-companie',
+      component: CreateCompanieView,
       meta: {
         requireLogin: true
       },
