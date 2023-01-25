@@ -15,21 +15,19 @@
     }
 
     const createCompany = ():void => {
+        errors.length = 0
+
         const comp:Company = {
             name: compName.value,
             description: compDesc.value
         }
 
-        console.log(comp)
-
         axios
             .post('/api/company/create/', comp)
             .then(response => {
-                console.log(response)
+                
             })
             .catch(error => {
-                console.log(error)
-
                 if (error.response) {
                     // Loops the server errors and push it in the errors array
                     for (const property in error.response.data) {
@@ -39,6 +37,10 @@
                     }
                 }
             })
+        
+        // Resets the input fields
+        compName.value = ''
+        compDesc.value = ''
     }
 </script>
 

@@ -11,7 +11,7 @@ class CompanySerializer(serializers.ModelSerializer):
             'get_absolute_url'
         )
 
-    # creates an company
+    # creates a company
     def create(self, validated_data):
         name = validated_data.get('name')
         desc = validated_data.get('description')

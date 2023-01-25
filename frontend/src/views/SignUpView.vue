@@ -1,6 +1,8 @@
 <script setup lang="ts">
     import { ref, reactive } from 'vue'
+    import { RouterLink } from 'vue-router';
     import axios from 'axios';
+    import router from '@/router';
 
     // Vars for sign up
     const username = ref('')
@@ -29,7 +31,7 @@
             axios
                 .post('/api/user/register/', formData)
                 .then(response => {
-                    
+                    router.push('/sign-in')
                 })
                 .catch(error => {
                     console.log(error)
@@ -79,7 +81,9 @@
                         <p v-for="error in errors">{{ error }}</p>
                     </div>
 
-                    <button class="bg-green-600 rounded-lg p-3 w-96 hover:scale-110 duration-200">Sign Up</button>
+                    <button class="bg-green-600 rounded-lg p-3 w-96 hover:scale-110 duration-200 mb-2">Sign Up</button> <br/>
+
+                    Already have na account? <RouterLink to="/sign-in" class="text-blue-700 underline">Sing In</RouterLink>
                 </form>
             </div>
         </div>

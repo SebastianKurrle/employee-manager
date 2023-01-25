@@ -28,3 +28,8 @@ class CompanyView(APIView):
         serializer.save()
         return Response(status=200)
 
+    def get(self, request):
+        companies = Company.objects.filter(user=request.user)
+        serializer = CompanySerializer(companies, many=True)
+
+        return Response(serializer.data)

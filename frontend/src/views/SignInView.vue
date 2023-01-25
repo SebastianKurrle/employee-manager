@@ -3,7 +3,7 @@
     import { useAuthenitacedStore } from '@/stores/authenticated';
     import axios from 'axios';
     import router from '@/router';
-    import type { RouteLocationRaw } from 'vue-router';
+    import type { RouteLocationRaw, RouterLink } from 'vue-router';
 
     // Vars for sign in
     const username = ref('')
@@ -68,7 +68,9 @@
                         <p v-for="error in errors">{{ error }}</p>
                     </div>
 
-                    <button class="bg-green-600 rounded-lg p-3 w-96 hover:scale-110 duration-200">Sign In</button>
+                    <button class="bg-green-600 rounded-lg p-3 w-96 hover:scale-110 duration-200 mb-2">Sign In</button> <br/>
+
+                    Need an account? <RouterLink to="/sign-up" class="text-blue-700 underline">Sing Up</RouterLink>
                 </form>
             </div>
         </div>

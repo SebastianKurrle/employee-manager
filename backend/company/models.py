@@ -8,7 +8,7 @@ class Company(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def get_absolute_url(self):
-        return f'/{self.user}/company/{self.name}'
+        return f'/{str(self.user).lower()}/company/{str(self.name).lower()}'
 
     def __str__(self):
         return self.name
