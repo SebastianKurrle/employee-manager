@@ -4,6 +4,7 @@ import { onBeforeMount } from 'vue';
 import { useAuthenitacedStore } from './stores/authenticated';
 import axios from 'axios';
 import Navbar from './components/Navbar.vue';
+import Loader from './components/Loader.vue'
 
 const authenticatedStore = useAuthenitacedStore()
 
@@ -25,6 +26,10 @@ onBeforeMount(() => {
     <header>
       <Navbar />
     </header>
+    
+    <div class="flex justify-center mt-3">
+      <Loader />
+    </div>
 
     <main class="container max-w-7xl m-auto mt-3">
       <RouterView />

@@ -1,7 +1,10 @@
 <script setup lang="ts">
     import { RouterLink } from 'vue-router';
     import { reactive } from 'vue'
+    import { useLoaderStore } from '@/stores/loader';
     import axios from 'axios';
+
+    const loaderStore = useLoaderStore()
 
     // Datatype for the companies
     interface Company {
@@ -13,10 +16,11 @@
 
     const companies = reactive(Array<Company>())
 
-    const getCompanies = () => {
+    const getCompanies = async () => {
+        loaderStore.setIsLoading()
 
         // gets the companies from the user from the api
-        axios
+        await axios
             .get('/api/company/all/')
             .then(response => {
                 // pushes the companies in the array
@@ -27,6 +31,8 @@
             .catch(error => {
                 console.log(error)
             })
+        
+        loaderStore.setIsLoading()
     }
 
     getCompanies()
