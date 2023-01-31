@@ -45,6 +45,10 @@
 <template>
     <div>
         <h1 class="text-lg text-center font-semibold">{{ company.name }}</h1>
+
+        <div class="bg-gray-700 p-3 mt-3">
+
+        </div>
     </div>
 </template>
 

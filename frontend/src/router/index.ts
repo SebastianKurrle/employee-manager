@@ -9,11 +9,17 @@ import SignUpView from '@/views/SignUpView.vue'
 import SignInViewVue from '@/views/SignInView.vue'
 import CreateCompanieView from '@/views/CreateCompanieView.vue'
 import CompanieDetailView from '@/views/CompanyDetailView.vue'
+import NotFoundView from '@/views/404View.vue'
 
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
+    {
+      path: '/not-found',
+      name: '404',
+      component: NotFoundView
+    },
     {
       path: '/',
       name: 'home',

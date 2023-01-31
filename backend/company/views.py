@@ -41,7 +41,10 @@ class CompanyDetailView(APIView):
         self.check_permissions(request)
 
         # gets the company with the id
-        company = Company.objects.get(slug=comp_slug, user=request.user)
+        company = Company.objects.filter(slug=comp_slug, user=request.user).first()
+
+        if company == None:
+            return Response(status=404)
 
         serializer = CompanySerializer(company)
 
