@@ -8,6 +8,7 @@ import MyAccountView from '@/views/MyAccountView.vue'
 import SignUpView from '@/views/SignUpView.vue'
 import SignInViewVue from '@/views/SignInView.vue'
 import CreateCompanieView from '@/views/CreateCompanieView.vue'
+import CompanieDetailView from '@/views/CompanyDetailView.vue'
 
 
 const router = createRouter({
@@ -53,6 +54,16 @@ const router = createRouter({
       meta: {
         requireLogin: true
       },
+    },
+
+    {
+      path: '/:username/company/:slug',
+      name: 'company-detail',
+      component: CompanieDetailView,
+
+      meta: {
+        requireLogin: true
+      }
     }
   ]
 })

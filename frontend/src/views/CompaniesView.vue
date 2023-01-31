@@ -51,16 +51,18 @@
         <div class="flex justify-center mt-3">
             <div class="grid lg:grid-cols-3 md:grid-cols-2 gap-1">
                 <div class="flip-card col-span-1" v-for="comp in companies" :key="Number(comp.id)">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front">
-                            <p class="title">{{ comp.name }}</p>
-                            <p>Hover Me</p>
+                    <RouterLink :to="String(comp.get_absolute_url)">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <p class="title">{{ comp.name }}</p>
+                                <p>Hover Me</p>
+                            </div>
+                            <div class="flip-card-back">
+                                <p class="font-bold text-lg">{{ comp.description }}</p>
+                                <p class="text-gray-800 font-semibold">CLICK TO MANAGE</p>
+                            </div>
                         </div>
-                        <div class="flip-card-back">
-                            <p class="font-bold text-lg">{{ comp.description }}</p>
-                            <p class="text-gray-800 font-semibold">CLICK TO MANAGE</p>
-                        </div>
-                    </div>
+                    </RouterLink>
                 </div>
             </div>
         </div>
