@@ -33,3 +33,16 @@ class CompanyView(APIView):
         serializer = CompanySerializer(companies, many=True)
 
         return Response(serializer.data)
+
+class CompanyDetailView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request, comp_slug):
+        self.check_permissions(request)
+
+        # gets the company with the id
+        company = Company.objects.get(slug=comp_slug, user=request.user)
+
+        serializer = CompanySerializer(company)
+
+        return Response(serializer.data)

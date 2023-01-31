@@ -63,17 +63,17 @@
         <div class="flex justify-center mt-3">
             <div>
                 <form @submit.prevent="signUp">
-                    <input type="text" required class="input w-96 mb-3" placeholder="username" v-model="username">
+                    <input type="text" required class="input w-96 mb-3" placeholder="Username" v-model="username">
                     <br/>
-                    <input type="text" required class="input w-96 mb-3" placeholder="first name" v-model="firstName">
+                    <input type="text" required class="input w-96 mb-3" placeholder="First name" v-model="firstName">
                     <br/>
-                    <input type="text" required class="input w-96 mb-3" placeholder="lastname" v-model="lastName">
+                    <input type="text" required class="input w-96 mb-3" placeholder="Lastname" v-model="lastName">
                     <br/>
-                    <input type="email" required class="input w-96 mb-3" placeholder="email" v-model="email">
+                    <input type="email" required class="input w-96 mb-3" placeholder="Email" v-model="email">
                     <br/>
-                    <input type="password" required class="input w-96 mb-3" placeholder="password" v-model="password">
+                    <input type="password" required class="input w-96 mb-3" placeholder="Password" v-model="password">
                     <br/>
-                    <input type="password" required class="input w-96 mb-3" placeholder="password again" v-model="password2">
+                    <input type="password" required class="input w-96 mb-3" placeholder="Password Again" v-model="password2">
 
                     <br/>
 
