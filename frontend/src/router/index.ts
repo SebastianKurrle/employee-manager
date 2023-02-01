@@ -16,11 +16,6 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '/not-found',
-      name: '404',
-      component: NotFoundView
-    },
-    {
       path: '/',
       name: 'home',
       component: HomeViewVue
@@ -70,6 +65,10 @@ const router = createRouter({
       meta: {
         requireLogin: true
       }
+    },
+    {
+      path: '/:catchAll(.*)',
+      component: NotFoundView
     }
   ]
 })
