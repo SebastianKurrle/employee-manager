@@ -4,6 +4,9 @@
     import { useLoaderStore } from '@/stores/loader';
     import axios from 'axios';
 
+    //components
+    import AddButton from '@/components/AddButton.vue'
+
     const loaderStore = useLoaderStore()
 
     // Datatype for the companies
@@ -42,11 +45,7 @@
     <div>
         <h1 class="text-lg text-center font-semibold">My Companies</h1>
 
-        <RouterLink to="/company/create">
-            <div class="absolute top-20 right-5 bg-green-600 p-3 w-20 text-center rounded-full hover:scale-110 duration-200 cursor-pointer">
-                <font-awesome-icon icon="fa-solid fa-plus" /> Add
-            </div>
-        </RouterLink>
+        <AddButton url="/company/create"/>
 
         <div class="flex justify-center mt-3">
             <div class="grid lg:grid-cols-3 md:grid-cols-2 gap-1">

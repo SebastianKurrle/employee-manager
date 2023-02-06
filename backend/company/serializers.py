@@ -19,5 +19,5 @@ class CompanySerializer(serializers.ModelSerializer):
         user = self.context.get('request').user
 
         company = Company.objects.create(name=name, description=desc, slug=slug, user=user)
-        return user
+        return company
 

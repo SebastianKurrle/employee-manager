@@ -3,6 +3,7 @@ from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from .serializers import CompanySerializer
 from .models import Company
+from .permissons import IsOwner
 
 class CompanyView(APIView):
     permission_classes = [IsAuthenticated]
@@ -35,13 +36,18 @@ class CompanyView(APIView):
         return Response(serializer.data)
 
 class CompanyDetailView(APIView):
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated, IsOwner]
 
     def get(self, request, comp_slug):
         self.check_permissions(request)
 
         # gets the company with the id
-        company = Company.objects.get(slug=comp_slug, user=request.user)
+        company = Company.objects.filter(slug=comp_slug, user=request.user).first()
+        print(company)
+        if company == None:
+            return Response(status=404)
+
+        self.check_object_permissions(request, company)
 
         serializer = CompanySerializer(company)
 
