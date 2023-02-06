@@ -1,4 +1,6 @@
 <script setup lang="ts">
+    import { ref } from 'vue'
+
     //components
     import AddButton from '@/components/AddButton.vue'
 </script>

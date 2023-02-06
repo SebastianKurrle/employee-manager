@@ -4,6 +4,9 @@
     import axios from 'axios';
     import router from '@/router';
 
+    // components
+    import DeleteCompanyConfrime from '@/components/DeleteCompanyConfrime.vue';
+
     const loaderStore = useLoaderStore()
 
     interface Company {
@@ -55,6 +58,7 @@
             <br/>
             <div class="mb-3 flex flex-col gap-1 text-center">
                 <RouterLink :to="String(company.get_absolute_url) + '/manage-employees'" class="bg-blue-800 text-white p-3 rounded-md hover:scale-105 duration-200">Manage Employees</RouterLink>
+                <DeleteCompanyConfrime />
             </div>
         </div>
     </div>
