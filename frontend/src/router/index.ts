@@ -9,6 +9,7 @@ import SignUpView from '@/views/SignUpView.vue'
 import SignInViewVue from '@/views/SignInView.vue'
 import CreateCompanieView from '@/views/CreateCompanieView.vue'
 import CompanieDetailView from '@/views/CompanyDetailView.vue'
+import ManageEmployeesViewVue from '@/views/ManageEmployeesView.vue'
 import NotFoundView from '@/views/404View.vue'
 
 
@@ -58,7 +59,7 @@ const router = createRouter({
     },
 
     {
-      path: '/:username/company/:slug',
+      path: '/company/:slug',
       name: 'company-detail',
       component: CompanieDetailView,
 
@@ -66,6 +67,17 @@ const router = createRouter({
         requireLogin: true
       }
     },
+
+    {
+      path: '/company/:slug/manage-employees',
+      name: 'manage-employees',
+      component: ManageEmployeesViewVue,
+
+      meta: {
+        requireLogin: true
+      }
+    },
+    
     {
       path: '/:catchAll(.*)',
       component: NotFoundView

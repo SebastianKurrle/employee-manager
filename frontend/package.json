@@ -16,7 +16,10 @@
     "@fortawesome/free-regular-svg-icons": "^6.2.1",
     "@fortawesome/free-solid-svg-icons": "^6.2.1",
     "@fortawesome/vue-fontawesome": "^3.0.2",
+    "@headlessui/vue": "^1.7.9",
+    "@heroicons/vue": "^2.0.14",
     "axios": "^1.2.3",
+    "flowbite": "^1.6.3",
     "pinia": "^2.0.28",
     "vue": "^3.2.45",
     "vue-router": "^4.1.6"

@@ -43,7 +43,7 @@ class CompanyDetailView(APIView):
 
         # gets the company with the id
         company = Company.objects.filter(slug=comp_slug, user=request.user).first()
-
+        print(company)
         if company == None:
             return Response(status=404)
 
