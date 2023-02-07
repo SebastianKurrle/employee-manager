@@ -57,7 +57,8 @@
             <h5 class="text-lg text-gray-300 font-semibold mt-3">Options:</h5>
             <br/>
             <div class="mb-3 flex flex-col gap-1 text-center">
-                <RouterLink :to="String(company.get_absolute_url) + '/manage-employees'" class="bg-blue-800 text-white p-3 rounded-md hover:scale-105 duration-200">Manage Employees</RouterLink>
+                <RouterLink :to="String(company.get_absolute_url) + '/manage-employees'" class="bg-blue-800 text-white p-3 rounded-md hover:scale-105 duration-200">
+                    Manage Employees <font-awesome-icon icon="fa-solid fa-people-roof" /></RouterLink>
                 <DeleteCompanyConfrime />
             </div>
         </div>

@@ -26,7 +26,6 @@ onBeforeMount(() => {
     <header>
       <Navbar />
     </header>
-    
     <div class="flex justify-center mt-3">
       <Loader />
     </div>

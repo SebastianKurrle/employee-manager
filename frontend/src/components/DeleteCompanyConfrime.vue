@@ -8,7 +8,7 @@
 
 <template>
     <div>
-        <button class="bg-red-800 p-3 text-white rounded-md hover:scale-105 duration-200 w-full" @click="open = true">Delete Company</button>
+        <button class="bg-red-800 p-3 text-white rounded-md hover:scale-105 duration-200 w-full" @click="open = true">Delete Company <font-awesome-icon icon="fa-solid fa-trash" /></button>
 
         <TransitionRoot as="template" :show="open">
             <Dialog as="div" class="relative z-10" @close="open = false">
