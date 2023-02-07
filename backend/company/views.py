@@ -52,3 +52,12 @@ class CompanyDetailView(APIView):
         serializer = CompanySerializer(company)
 
         return Response(serializer.data)
+
+    def delete(self, request, id):
+        self.check_permissions(request)
+
+        company = Company.objects.get(id=id)
+        self.check_object_permissions(request, company)
+
+        company.delete()
+        return Response(status=204)

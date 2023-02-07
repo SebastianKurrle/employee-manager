@@ -1,13 +1,16 @@
 <script setup lang="ts">
     import { reactive, ref } from 'vue'
     import { useLoaderStore } from '@/stores/loader';
+    import { useCompanyStore } from '@/stores/company';
     import axios from 'axios';
     import router from '@/router';
 
     // components
     import DeleteCompanyConfrime from '@/components/DeleteCompanyConfrime.vue';
 
+    // stores
     const loaderStore = useLoaderStore()
+    const companyStore = useCompanyStore()
 
     interface Company {
         id:Number,
@@ -34,6 +37,7 @@
             .get(`/api/company/get/${compSlug}/`)
             .then(response => {
                 company.value = response.data
+                companyStore.setCompany(company.value)
             })
             .catch(error => {
                 console.log(error)

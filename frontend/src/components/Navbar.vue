@@ -9,7 +9,7 @@ const authenticatedStore = useAuthenitacedStore()
     <div>
 
         <nav
-            class="bg-gray-700 px-2 sm:px-4 py-2.5 dark:bg-gray-900 w-full z-20 border-b border-gray-200 dark:border-gray-600">
+            class="bg-gray-700 px-2 sm:px-4 py-2.5 dark:bg-gray-900 w-full z-45 border-b border-gray-200 dark:border-gray-600">
             <div class="container flex flex-wrap items-center justify-between mx-auto">
                 <RouterLink to="/"><span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white"><font-awesome-icon icon="fa-solid fa-house-user" /></span></RouterLink>
                 <div class="flex md:order-2">
