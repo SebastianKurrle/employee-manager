@@ -7,11 +7,6 @@
 
     //stores
     const companyStore = useCompanyStore()
-
-    onMounted(() => {
-        const compObj = JSON.parse(String(localStorage.getItem('company')))
-        companyStore.setCompany(compObj)
-    })
 </script>
 
 <template>
