@@ -10,6 +10,7 @@ import SignInViewVue from '@/views/SignInView.vue'
 import CreateCompanieView from '@/views/CreateCompanieView.vue'
 import CompanieDetailView from '@/views/CompanyDetailView.vue'
 import ManageEmployeesViewVue from '@/views/ManageEmployeesView.vue'
+import CreateEmployeeView from '@/views/CreateEmployee.vue'
 import NotFoundView from '@/views/404View.vue'
 
 
@@ -72,6 +73,16 @@ const router = createRouter({
       path: '/company/:slug/manage-employees',
       name: 'manage-employees',
       component: ManageEmployeesViewVue,
+
+      meta: {
+        requireLogin: true
+      }
+    },
+
+    {
+      path: '/employee/create',
+      name: 'create-employee',
+      component: CreateEmployeeView,
 
       meta: {
         requireLogin: true

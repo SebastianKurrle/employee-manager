@@ -38,9 +38,10 @@
             .then(response => {
                 company.value = response.data
                 companyStore.setCompany(company.value)
+                localStorage.setItem('company', JSON.stringify(company.value))
             })
             .catch(error => {
-                console.log(error)
+                router.push('/not-found')
             })
         
         loaderStore.setIsLoading()
