@@ -1,18 +1,63 @@
 <script setup lang="ts">
-    import { ref, onMounted } from 'vue'
+    import { ref, reactive } from 'vue'
     import { useCompanyStore } from '@/stores/company';
+    import { useLoaderStore } from '@/stores/loader';
+    import axios from 'axios';
 
     //components
     import AddButton from '@/components/AddButton.vue'
+    import EmployeeCard from '@/components/EmployeeCard.vue';
 
     //stores
     const companyStore = useCompanyStore()
+    const loaderStore = useLoaderStore()
+
+    // interfaces
+    interface Employee {
+        id: Number,
+        firstName: String,
+        lastName: String,
+        birthday: String,
+        department: String,
+        salaryPerHour: Number,
+        hoursPerWeek: Number,
+        image: String,
+        company: Number,
+        getImage: String
+    }
+
+    const employees = reactive(Array<Employee>())
+
+    const getEmployees = async () => {
+        loaderStore.setIsLoading()
+
+        await axios
+                .get(`/api/employees/${companyStore.company.id}/`)
+                .then(response => {
+                    response.data.map((emp:Employee) => {
+                        employees.push(emp)
+                    })
+                })
+                .catch(error => {
+                    console.log(error)
+                })
+        
+        loaderStore.setIsLoading()
+    }
+
+    getEmployees()
 </script>
 
 <template>
     <div>
         <h1 class="text-lg text-center font-semibold">Manage Employees</h1>
         <AddButton url="/employee/create"/>
+
+        <div class="flex justify-center mt-3">
+            <div class="grid lg:grid-cols-3 md:grid-cols-2 gap-2">
+                <EmployeeCard v-for="emp in employees" :employee="emp" :key="Number(emp.id)"/>
+            </div>
+        </div>
     </div>
 </template>
 

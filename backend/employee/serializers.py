@@ -29,18 +29,16 @@ class EmployeeSerializer(ModelSerializer):
         hours_per_week = validated_data.get('hours_per_week')
         image = validated_data.get('image')
         company = validated_data.get('company')
-        
-        # creates the employee
+
+        # creates the employee and checks
+        employee = Employee.objects.create(first_name=first_name, last_name=last_name, birthday=birthday,
+                                           department=department, salary_per_hour=salary_per_hour,
+                                           hours_per_week=hours_per_week,
+                                           company=company)
+
         if image is not None:
-            employee = Employee.objects.create(first_name=first_name, last_name=last_name, birthday=birthday,
-                                               department=department, salary_per_hour=salary_per_hour,
-                                               hours_per_week=hours_per_week,
-                                               image=image, company=company)
-        else:
-            employee = Employee.objects.create(first_name=first_name, last_name=last_name, birthday=birthday,
-                                               department=department, salary_per_hour=salary_per_hour,
-                                               hours_per_week=hours_per_week,
-                                               company=company)
+            employee.image = image
+            employee.save()
 
         return employee
 
