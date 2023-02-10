@@ -24,7 +24,9 @@ onBeforeMount(() => {
 
 onMounted(() => {
       const compObj = JSON.parse(String(localStorage.getItem('company')))
-      companyStore.setCompany(compObj)
+
+      if (compObj !== null)
+        companyStore.setCompany(compObj)
 })
 
 </script>

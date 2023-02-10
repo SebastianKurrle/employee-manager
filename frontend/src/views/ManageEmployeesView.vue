@@ -1,8 +1,9 @@
 <script setup lang="ts">
-    import { ref, reactive } from 'vue'
+    import { ref, reactive, onMounted } from 'vue'
     import { useCompanyStore } from '@/stores/company';
     import { useLoaderStore } from '@/stores/loader';
     import axios from 'axios';
+    import router from '@/router';
 
     //components
     import AddButton from '@/components/AddButton.vue'
@@ -45,7 +46,14 @@
         loaderStore.setIsLoading()
     }
 
-    getEmployees()
+    onMounted(() => {
+        // checks if a copmany is selected
+        if (companyStore.company.id === -1) {
+            router.push('/companies')
+        } else {
+            getEmployees()
+        }
+    })
 </script>
 
 <template>

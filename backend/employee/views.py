@@ -27,3 +27,16 @@ class EmployeeView(APIView):
         serializer = EmployeeSerializer(employees, many=True)
 
         return Response(serializer.data, status=200)
+
+class EmployeeDetailView(APIView):
+
+    # gets a single employee with an id
+    def get(self, request, comp_id, emp_id):
+        employee = Employee.objects.get(id=emp_id)
+        company = Company.objects.get(id=comp_id)
+        serializer = EmployeeSerializer(employee)
+
+        if employee.company != company:
+            return Response(status=403)
+
+        return Response(serializer.data)

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-    import { reactive, ref } from 'vue'
+    import { ref } from 'vue'
     import { useLoaderStore } from '@/stores/loader';
     import { useCompanyStore } from '@/stores/company';
     import axios from 'axios';

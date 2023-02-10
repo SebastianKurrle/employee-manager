@@ -15,9 +15,9 @@
             <img :src="employee.get_image">
         </div>
         <span> {{ `${employee.first_name} ${employee.last_name}` }}</span>
-        <p class="job"> Job Title</p>
-        <RouterLink class="link" to="#">Update</RouterLink>
-        <RouterLink class="link" to="#">Detail Information</RouterLink>
+        <p class="job">{{ employee.department }}</p>
+        <RouterLink class="link" :to="`/employee/${employee.id}/update`"><font-awesome-icon icon="fa-solid fa-pen-to-square" /></RouterLink>
+        <RouterLink class="link" to="#"><font-awesome-icon icon="fa-solid fa-circle-info" /></RouterLink>
     </div>
 </template>
 
