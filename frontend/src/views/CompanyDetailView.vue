@@ -13,10 +13,10 @@
     const companyStore = useCompanyStore()
 
     interface Company {
-        id:Number,
-        name:String,
-        description:String,
-        get_absolute_url:String
+        id:number,
+        name:string,
+        description:string,
+        get_absolute_url:string
     }
 
     let startComp:Company = {

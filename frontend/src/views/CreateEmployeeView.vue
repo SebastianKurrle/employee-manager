@@ -7,15 +7,16 @@
     const companyStore = useCompanyStore()
 
     interface Employee {
-        first_name:String,
-        last_name:String,
-        department:String,
-        birthday:String,
-        salary_per_hour:Number,
-        hours_per_week:Number,
-        image:Object,
-        company:Number
+        first_name:string,
+        last_name:string,
+        department:string,
+        birthday:string,
+        salary_per_hour:number,
+        hours_per_week:number,
+        image:object,
+        company:number
     }
+
 
     // vars for the form
     const firstname = ref('')
@@ -24,7 +25,7 @@
     const salaryPerHour = ref(0)
     const hoursPerWeek = ref(0)
     const birthday = ref('')
-    const image = ref('')
+    const image = ref({})
 
     const errors = reactive(Array())
 
@@ -122,20 +123,5 @@
 </template>
 
 <style scoped>
-.input {
-    border: 2px solid #e8e8e8;
-    padding: 15px;
-    border-radius: 10px;
-    background-color: #212121;
-    font-size: small;
-    font-weight: bold;
-    text-align: center;
-}
-
-.input:focus {
-    outline-color: white;
-    background-color: #212121;
-    color: #e8e8e8;
-    box-shadow: 5px 5px #888888;
-}
+@import '@/assets/style/input.css';
 </style>

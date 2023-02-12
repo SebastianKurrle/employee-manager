@@ -21,6 +21,7 @@ export const useAuthenitacedStore = defineStore('authenticated', () => {
         authenticated.value = false
         localStorage.removeItem('token')
         localStorage.removeItem('username')
+        localStorage.removeItem('company')
     }
 
     return {authenticated, token, setAuthenticated, logout}

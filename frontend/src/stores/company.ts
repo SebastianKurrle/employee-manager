@@ -2,10 +2,10 @@ import { defineStore } from "pinia";
 import { ref } from "vue";
 
 interface Company {
-    id:Number,
-    name:String,
-    description:String,
-    get_absolute_url:String
+    id:number,
+    name:string,
+    description:string,
+    get_absolute_url:string
 }
 
 // defines the start company for no errors

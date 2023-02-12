@@ -1,6 +1,7 @@
 from rest_framework.serializers import ModelSerializer
 from .models import Employee
 from company.models import Company
+import os
 
 
 class EmployeeSerializer(ModelSerializer):
@@ -41,4 +42,3 @@ class EmployeeSerializer(ModelSerializer):
             employee.save()
 
         return employee
-
