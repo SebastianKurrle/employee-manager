@@ -1,12 +1,15 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router'
-import { onBeforeMount } from 'vue';
+import { onBeforeMount, onMounted } from 'vue';
 import { useAuthenitacedStore } from './stores/authenticated';
+import { useCompanyStore } from './stores/company';
 import axios from 'axios';
 import Navbar from './components/Navbar.vue';
 import Loader from './components/Loader.vue'
 
+// stores
 const authenticatedStore = useAuthenitacedStore()
+const companyStore = useCompanyStore()
 
 onBeforeMount(() => {
   authenticatedStore.setAuthenticated()
@@ -19,6 +22,13 @@ onBeforeMount(() => {
   }
 })
 
+onMounted(() => {
+      const compObj = JSON.parse(String(localStorage.getItem('company')))
+
+      if (compObj !== null)
+        companyStore.setCompany(compObj)
+})
+
 </script>
 
 <template>
@@ -26,7 +36,6 @@ onBeforeMount(() => {
     <header>
       <Navbar />
     </header>
-    
     <div class="flex justify-center mt-3">
       <Loader />
     </div>

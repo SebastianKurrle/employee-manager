@@ -32,7 +32,7 @@
         <div class="mt-3 p-3 rounded-md bg-gray-800" v-else>
           <h5 class="text-xl font-semibold text-center">Manage your employees easily</h5>
 
-          <h6 class="text-lg mb-2">Getting started</h6>
+          <h6 class="text-lg mb-2"><font-awesome-icon icon="fa-solid fa-circle-info" /> Getting started</h6>
           <RouterLink to="/company/create" class="text-gray-400">1. Create Company</RouterLink>
           <br/>
           <RouterLink to="/companies" class="text-gray-400">2. Display my companies</RouterLink>

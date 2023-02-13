@@ -43,7 +43,6 @@ class CompanyDetailView(APIView):
 
         # gets the company with the id
         company = Company.objects.filter(slug=comp_slug, user=request.user).first()
-        print(company)
         if company == None:
             return Response(status=404)
 
@@ -52,3 +51,12 @@ class CompanyDetailView(APIView):
         serializer = CompanySerializer(company)
 
         return Response(serializer.data)
+
+    def delete(self, request, id):
+        self.check_permissions(request)
+
+        company = Company.objects.get(id=id)
+        self.check_object_permissions(request, company)
+
+        company.delete()
+        return Response(status=204)

@@ -10,6 +10,9 @@ import SignInViewVue from '@/views/SignInView.vue'
 import CreateCompanieView from '@/views/CreateCompanieView.vue'
 import CompanieDetailView from '@/views/CompanyDetailView.vue'
 import ManageEmployeesViewVue from '@/views/ManageEmployeesView.vue'
+import CreateEmployeeView from '@/views/CreateEmployeeView.vue'
+import UpdateEmployeeView from '@/views/UpdateEmployeeView.vue'
+import EmployeeDetailView from '@/views/EmployeeDetailView.vue'
 import NotFoundView from '@/views/404View.vue'
 
 
@@ -72,6 +75,36 @@ const router = createRouter({
       path: '/company/:slug/manage-employees',
       name: 'manage-employees',
       component: ManageEmployeesViewVue,
+
+      meta: {
+        requireLogin: true
+      }
+    },
+
+    {
+      path: '/employee/create',
+      name: 'create-employee',
+      component: CreateEmployeeView,
+
+      meta: {
+        requireLogin: true
+      }
+    },
+
+    {
+      path: '/employee/:empId',
+      name: 'employee-detail',
+      component: EmployeeDetailView,
+
+      meta: {
+        requireLogin: true
+      }
+    },
+
+    {
+      path: '/employee/:empId/update',
+      name: 'update-employee',
+      component: UpdateEmployeeView,
 
       meta: {
         requireLogin: true
