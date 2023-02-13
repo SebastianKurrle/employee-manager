@@ -7,6 +7,7 @@
 
     //components
     import AddButton from '@/components/AddButton.vue'
+    import BackButton from '@/components/BackButton.vue';
     import EmployeeCard from '@/components/EmployeeCard.vue';
 
     //stores
@@ -66,6 +67,8 @@
                 <EmployeeCard v-for="emp in employees" :employee="emp" :key="Number(emp.id)"/>
             </div>
         </div>
+
+        <BackButton :url="companyStore.company.get_absolute_url"/>
     </div>
 </template>
 

@@ -12,6 +12,7 @@ import CompanieDetailView from '@/views/CompanyDetailView.vue'
 import ManageEmployeesViewVue from '@/views/ManageEmployeesView.vue'
 import CreateEmployeeView from '@/views/CreateEmployeeView.vue'
 import UpdateEmployeeView from '@/views/UpdateEmployeeView.vue'
+import EmployeeDetailView from '@/views/EmployeeDetailView.vue'
 import NotFoundView from '@/views/404View.vue'
 
 
@@ -91,7 +92,17 @@ const router = createRouter({
     },
 
     {
-      path: '/employee/:empId/update/',
+      path: '/employee/:empId',
+      name: 'employee-detail',
+      component: EmployeeDetailView,
+
+      meta: {
+        requireLogin: true
+      }
+    },
+
+    {
+      path: '/employee/:empId/update',
       name: 'update-employee',
       component: UpdateEmployeeView,
 

@@ -11,6 +11,6 @@ def delete_old_image(sender, instance, **kwargs):
         return
 
     new_image = instance.image
-    if not old_image == new_image:
+    if not old_image == new_image and old_image != 'images/default.png':
         if old_image:
             old_image.delete(save=False)

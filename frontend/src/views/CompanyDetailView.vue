@@ -7,6 +7,7 @@
 
     // components
     import DeleteCompanyConfrime from '@/components/DeleteCompanyConfrime.vue';
+    import BackButton from '@/components/BackButton.vue';
 
     // stores
     const loaderStore = useLoaderStore()
@@ -67,6 +68,8 @@
                 <DeleteCompanyConfrime />
             </div>
         </div>
+
+        <BackButton url="/companies"/>
     </div>
 </template>
 

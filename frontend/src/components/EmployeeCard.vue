@@ -17,7 +17,7 @@
         <span> {{ `${employee.first_name} ${employee.last_name}` }}</span>
         <p class="job">{{ employee.department }}</p>
         <RouterLink class="link" :to="`/employee/${employee.id}/update`"><font-awesome-icon icon="fa-solid fa-pen-to-square" /></RouterLink>
-        <RouterLink class="link" to="#"><font-awesome-icon icon="fa-solid fa-circle-info" /></RouterLink>
+        <RouterLink class="link" :to="`/employee/${employee.id}`"><font-awesome-icon icon="fa-solid fa-circle-info" /></RouterLink>
     </div>
 </template>
 

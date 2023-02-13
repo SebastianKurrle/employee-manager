@@ -1,5 +1,6 @@
 from django.db import models
 from company.models import Company
+import os
 
 
 class Employee(models.Model):
@@ -22,3 +23,6 @@ class Employee(models.Model):
     # calculates the total salary from the employee
     def get_absolute_salary(self):
         return (self.salary_per_hour * self.hours_per_week) * 52
+
+    def get_image_name(self):
+        return os.path.basename(self.image.name)

@@ -4,6 +4,9 @@
     import axios from 'axios';
     import router from '@/router';
 
+    // components
+    import BackButton from '@/components/BackButton.vue';
+
     // interfaces
     interface Employee {
         first_name:string,
@@ -28,6 +31,7 @@
     const hoursPerWeek = ref(0)
     const birthday = ref('')
     const image = ref({})
+    const getImageName = ref('') // to display the current selected image
     const imageUrl = ref('')
 
     const errors = reactive(Array())
@@ -58,6 +62,7 @@
         hoursPerWeek.value = employee.hours_per_week,
         birthday.value = employee.birthday
         imageUrl.value = employee.get_image
+        getImageName.value = employee.get_image_name
         
         getImage(employee)
     }
@@ -68,8 +73,6 @@
         } else {
             image.value = ''
         }
-
-        console.log(image.value)
     }
 
     const formatDate = (date:Date) => {
@@ -155,7 +158,7 @@
                         <input type="date" class="w-96 rounded-md bg-gray-700" v-model="birthday">
                     </div>
                     
-                    <p><span class="font-semibold">Current image:</span> {{ image }}</p>
+                    <p><span class="font-semibold">Current image:</span> {{ getImageName }}</p>
                     <input @change="setImage" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" type="file">
                     
                     <div class="bg-red-500 text-white rounded p-3 mb-3" v-if="errors.length">
@@ -166,6 +169,8 @@
                 </form>
             </div>
         </div>
+
+        <BackButton :url="`${companyStore.company.get_absolute_url}/manage-employees`"/>
     </div>    
 </template>
 

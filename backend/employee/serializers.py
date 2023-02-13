@@ -18,7 +18,9 @@ class EmployeeSerializer(ModelSerializer):
             'hours_per_week',
             'image',
             'company',
-            'get_image'
+            'get_image',
+            'get_image_name',
+            'get_absolute_salary',
         )
 
     def create(self, validated_data):
