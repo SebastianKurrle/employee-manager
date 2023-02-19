@@ -2,6 +2,7 @@
     import { ref, reactive, onMounted } from 'vue'
     import { useCompanyStore } from '@/stores/company';
     import { useLoaderStore } from '@/stores/loader';
+    import { useFilterEmployeeStore } from '@/stores/filterEmployee';
     import axios from 'axios';
     import router from '@/router';
 
@@ -14,6 +15,7 @@
     //stores
     const companyStore = useCompanyStore()
     const loaderStore = useLoaderStore()
+    const filterEmployeeStore = useFilterEmployeeStore()
 
     // interfaces
     interface Employee {
@@ -30,6 +32,7 @@
     }
 
     const employees = reactive(Array<Employee>())
+    const filtertEmployees = reactive(Array<Employee>())
 
     const getEmployees = async () => {
         loaderStore.setIsLoading()
@@ -68,7 +71,19 @@
         </div>
         <SerachEmployee />
 
-        <div class="flex justify-center mt-3">
+        <div v-if="filterEmployeeStore.isFiltert">
+            <h5 class="text-lg text-center font-semibold">Filter results</h5>
+
+            <button class="bg-blue-800 p-3 rounded-md hover:bg-blue-600" @click="filterEmployeeStore.clearFilter">Clear filter</button>
+
+            <div class="flex justify-center mt-3">
+                <div class="grid lg:grid-cols-3 md:grid-cols-2 gap-2">
+                    <EmployeeCard v-for="emp in filterEmployeeStore.filtertEmployees" :employee="emp" :key="Number(emp.id)"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex justify-center mt-3" v-else>
             <div class="grid lg:grid-cols-3 md:grid-cols-2 gap-2">
                 <EmployeeCard v-for="emp in employees" :employee="emp" :key="Number(emp.id)"/>
             </div>

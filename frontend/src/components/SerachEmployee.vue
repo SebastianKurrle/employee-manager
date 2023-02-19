@@ -1,10 +1,12 @@
 <script setup lang="ts">
     import { ref } from 'vue';
     import { useCompanyStore } from '@/stores/company';
+    import { useFilterEmployeeStore } from '@/stores/filterEmployee';
     import axios from 'axios';
 
     // stores
     const companyStore = useCompanyStore()
+    const filterEmployeeStore = useFilterEmployeeStore()
 
     const firstNameFilter = ref()
     const lastNameFilter = ref()
@@ -24,7 +26,7 @@
         axios
             .post(`/api/employee/filter/${companyStore.company.id}/`, filter)
             .then(response => {
-              console.log(response)
+              filterEmployeeStore.setFiltertEmployees(response.data)
             })
             .catch(error => {
               console.log(error)
