@@ -12,8 +12,9 @@ import axios from 'axios'
 
 import './assets/main.css'
 
-import 'flowbite/dist/flowbite.min.js'
+import 'flowbite/dist/flowbite.js'
 import 'vue3-toastify/dist/index.css'
+import 'tw-elements'
 
 axios.defaults.baseURL = 'http://127.0.0.1:8000'
 

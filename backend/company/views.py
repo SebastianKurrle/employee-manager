@@ -4,6 +4,7 @@ from rest_framework.permissions import IsAuthenticated
 from .serializers import CompanySerializer
 from .models import Company
 from .permissons import IsOwner
+from employee.models import Employee
 
 class CompanyView(APIView):
     permission_classes = [IsAuthenticated]
@@ -35,6 +36,7 @@ class CompanyView(APIView):
 
         return Response(serializer.data)
 
+
 class CompanyDetailView(APIView):
     permission_classes = [IsAuthenticated, IsOwner]
 
@@ -60,3 +62,20 @@ class CompanyDetailView(APIView):
 
         company.delete()
         return Response(status=204)
+
+
+class CompanyCostsView(APIView):
+    permission_classes = [IsAuthenticated, IsOwner]
+
+    # calculates the total costs from a company for the employees
+    def get(self, request, comp_id):
+        self.check_permissions(request)
+
+        company = Company.objects.get(id=comp_id)
+
+        self.check_object_permissions(request, company)
+
+        employees = Employee.objects.filter(company=company)
+        total_costs = sum(employee.get_absolute_salary() for employee in employees)
+
+        return Response({'totalCosts': total_costs})

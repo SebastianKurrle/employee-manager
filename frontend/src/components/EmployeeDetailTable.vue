@@ -19,7 +19,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr class="">
+          <tr>
             <td class="px-4 py-2">{{ `${employee.first_name} ${employee.last_name}` }}</td>
             <td class="px-4 py-2">{{ employee.department }}</td>
             <td class="px-4 py-2">{{ employee.birthday }}</td>

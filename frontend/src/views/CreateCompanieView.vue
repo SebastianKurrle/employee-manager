@@ -2,6 +2,9 @@
     import { ref, reactive } from 'vue'
     import axios from 'axios';
 
+    // components
+    import BackButton from '@/components/BackButton.vue';
+
     // for the company
     const compName = ref('')
     const compDesc = ref('')
@@ -62,6 +65,8 @@
                 </form>
             </div>
         </div>
+
+        <BackButton url="/companies"/>
     </div>
 </template>
 

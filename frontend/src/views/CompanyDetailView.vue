@@ -7,11 +7,14 @@
 
     // components
     import DeleteCompanyConfrime from '@/components/DeleteCompanyConfrime.vue';
+    import EmployeeTotalCosts from '@/components/EmployeeTotalCosts.vue';
     import BackButton from '@/components/BackButton.vue';
 
     // stores
     const loaderStore = useLoaderStore()
     const companyStore = useCompanyStore()
+
+    const loaded = ref(false)
 
     interface Company {
         id:number,
@@ -45,6 +48,7 @@
                 router.push('/not-found')
             })
         
+        loaded.value = true
         loaderStore.setIsLoading()
     }
 
@@ -65,7 +69,9 @@
             <div class="mb-3 flex flex-col gap-1 text-center">
                 <RouterLink :to="String(company.get_absolute_url) + '/manage-employees'" class="bg-blue-800 text-white p-3 rounded-md hover:scale-105 duration-200">
                     Manage Employees <font-awesome-icon icon="fa-solid fa-people-roof" /></RouterLink>
+                <button class="bg-blue-800 text-white p-3 rounded-md hover:scale-105 duration-200" data-bs-toggle="modal" data-bs-target="#totalCostsModal">Costs <font-awesome-icon icon="fa-solid fa-dollar-sign"/></button>
                 <DeleteCompanyConfrime />
+                <EmployeeTotalCosts v-if="loaded"/>
             </div>
         </div>
 

@@ -9,6 +9,7 @@
     import AddButton from '@/components/AddButton.vue'
     import BackButton from '@/components/BackButton.vue';
     import EmployeeCard from '@/components/EmployeeCard.vue';
+    import SerachEmployee from '@/components/SerachEmployee.vue';
 
     //stores
     const companyStore = useCompanyStore()
@@ -61,6 +62,11 @@
     <div>
         <h1 class="text-lg text-center font-semibold">Manage Employees</h1>
         <AddButton url="/employee/create"/>
+
+        <div class="flex justify-center md:justify-start">
+            <button class="bg-blue-800 p-3 mt-3 rounded-md hover:bg-blue-600" data-bs-toggle="modal" data-bs-target="#filterEmployeesModal">Filter Employees</button>
+        </div>
+        <SerachEmployee />
 
         <div class="flex justify-center mt-3">
             <div class="grid lg:grid-cols-3 md:grid-cols-2 gap-2">

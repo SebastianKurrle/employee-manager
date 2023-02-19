@@ -3,6 +3,9 @@
     import { useCompanyStore } from '@/stores/company';
     import axios from 'axios';
 
+    // components
+    import BackButton from '@/components/BackButton.vue';
+
     // stores
     const companyStore = useCompanyStore()
 
@@ -119,6 +122,8 @@
                 </form>
             </div>
         </div>
+
+        <BackButton :url="`${companyStore.company.get_absolute_url}/manage-employees`"/>
     </div>
 </template>
 
