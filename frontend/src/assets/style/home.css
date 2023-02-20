@@ -10,12 +10,6 @@
     border-radius: 20px;
   }
   
-  .card h2 {
-    z-index: 1;
-    color: white;
-    font-size: 2em;
-  }
-  
   .card::before {
     content: '';
     position: absolute;

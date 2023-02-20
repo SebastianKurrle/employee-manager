@@ -1,7 +1,11 @@
 <script setup lang="ts">
     import { ref, reactive } from 'vue';
     import { useCompanyStore } from '@/stores/company';
+    import { toast } from 'vue3-toastify';
     import axios from 'axios';
+
+    // components
+    import BackButton from '@/components/BackButton.vue';
 
     // stores
     const companyStore = useCompanyStore()
@@ -66,7 +70,7 @@
                 }
             })
             .then(response => {
-                
+                toast.success('Employee created', { autoClose: 3000 })
             })
             .catch(error => {
                 if (error.response) {
@@ -94,18 +98,18 @@
     <div>
         <h5 class="text-lg font-semibold text-center">Create Employee</h5>
 
-        <div class="flex justify-center border p-3 mt-3 rounded-md">
+        <div class="flex justify-center md:border p-3 mt-3 rounded-md">
             <div>
                 <form @submit.prevent="createEmployee" enctype="multipart/form-data" method="POST">   	
-                    <input type="text" class="input w-96 mb-3" required placeholder="Firstname *" v-model="firstname"/> <br/>
-                    <input type="text" class="input w-96 mb-3" required placeholder="Lastname *" v-model="lastname"/> <br/>
-                    <input type="text" class="input w-96 mb-3" required placeholder="Department *" v-model="departemnt"/> <br/>
-                    <input type="number" class="input w-96 mb-3" required placeholder="Salary per hour * " v-model="salaryPerHour"/> <br/>
-                    <input type="number" class="input w-96 mb-3" required placeholder="Hours per week *" v-model="hoursPerWeek"/>
+                    <input type="text" class="input w-80 mb-3 md:w-96" required placeholder="Firstname *" v-model="firstname"/> <br/>
+                    <input type="text" class="input w-80 mb-3 md:w-96" required placeholder="Lastname *" v-model="lastname"/> <br/>
+                    <input type="text" class="input w-80 mb-3 md:w-96" required placeholder="Department *" v-model="departemnt"/> <br/>
+                    <input type="number" class="input w-80 mb-3 md:w-96" required placeholder="Salary per hour * " v-model="salaryPerHour"/> <br/>
+                    <input type="number" class="input w-80 mb-3 md:w-96" required placeholder="Hours per week *" v-model="hoursPerWeek"/>
                     
                     <div class="mb-3">
                         <label class="font-semibold">Birthday *</label> <br/>
-                        <input type="date" class="w-96 rounded-md bg-gray-700" v-model="birthday">
+                        <input type="date" class="w-80 md:w-96 rounded-md bg-gray-700" v-model="birthday">
                     </div>
                     
                     <label class="block mb-2 text-md font-medium text-white dark:text-white" for="file_input">Image</label>
@@ -119,6 +123,8 @@
                 </form>
             </div>
         </div>
+
+        <BackButton :url="`${companyStore.company.get_absolute_url}/manage-employees`"/>
     </div>
 </template>
 

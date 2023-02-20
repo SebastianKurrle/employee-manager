@@ -59,16 +59,16 @@
         <div class="flex justify-center mt-3">
             <div>
                 <form @submit.prevent="signIn">
-                    <input type="text" class="input w-96 mb-3" required placeholder="Username" v-model="username"/>
+                    <input type="text" class="input w-80 mb-3 md:w-96" required placeholder="Username" v-model="username"/>
                     <br/>
-                    <input type="password" class="input w-96 mb-3" required placeholder="Password" v-model="password"/>
+                    <input type="password" class="input w-80 mb-3 md:w-96" required placeholder="Password" v-model="password"/>
                     <br/>
 
                     <div class="bg-red-500 text-white rounded p-3 mb-3" v-if="errors.length">
                         <p v-for="error in errors">{{ error }}</p>
                     </div>
 
-                    <button class="bg-green-600 rounded-lg p-3 w-96 hover:scale-110 duration-200 mb-2">Sign In</button> <br/>
+                    <button class="bg-green-600 rounded-lg p-3 w-80 hover:scale-110 duration-200 mb-2 md:w-96">Sign In</button> <br/>
 
                     Need an account? <RouterLink to="/sign-up" class="text-blue-700 underline">Sing Up</RouterLink>
                 </form>

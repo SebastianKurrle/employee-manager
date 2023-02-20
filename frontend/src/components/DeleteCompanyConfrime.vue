@@ -2,6 +2,7 @@
     import { ref } from 'vue'
     import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue'
     import { ExclamationTriangleIcon } from '@heroicons/vue/24/outline'
+    import { toast } from 'vue3-toastify';
     import axios from 'axios';
     import router from '@/router';
 
@@ -19,6 +20,8 @@
         axios
             .delete(`/api/company/${id}/`)
             .then(response => {
+                toast.error('Company deleted', { autoClose: 3000 })
+
                 if (response.status == 204) {
                     router.push('/companies')
                 }

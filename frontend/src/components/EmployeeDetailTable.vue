@@ -7,6 +7,7 @@
 </script>
 
 <template>
+  <div class="overflow-x-auto">
     <table class="table-auto w-full text-center mt-3">
         <thead class="bg-gray-900 text-white">
           <tr>
@@ -19,7 +20,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr class="">
+          <tr>
             <td class="px-4 py-2">{{ `${employee.first_name} ${employee.last_name}` }}</td>
             <td class="px-4 py-2">{{ employee.department }}</td>
             <td class="px-4 py-2">{{ employee.birthday }}</td>
@@ -28,7 +29,8 @@
             <td class="px-4 py-2">{{ employee.get_absolute_salary }} €</td>
           </tr>
         </tbody>
-    </table>      
+    </table>  
+  </div>    
 </template>
 
 <style scoped>

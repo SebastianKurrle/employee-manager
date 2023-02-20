@@ -8,16 +8,18 @@
 </script>
 
 <template>
-    <div class="card rounded-md">
-        <div class="card-border-top">
+    <div>
+        <div class="card rounded-md">
+            <div class="card-border-top">
+            </div>
+            <div class="img">
+                <img :src="employee.get_image">
+            </div>
+            <span> {{ `${employee.first_name} ${employee.last_name}` }}</span>
+            <p class="job">{{ employee.department }}</p>
+            <RouterLink class="link" :to="`/employee/${employee.id}/update`"><font-awesome-icon icon="fa-solid fa-pen-to-square" /></RouterLink>
+            <RouterLink class="link" :to="`/employee/${employee.id}`" data-popover-target="empPop"><font-awesome-icon icon="fa-solid fa-circle-info" /></RouterLink>
         </div>
-        <div class="img">
-            <img :src="employee.get_image">
-        </div>
-        <span> {{ `${employee.first_name} ${employee.last_name}` }}</span>
-        <p class="job">{{ employee.department }}</p>
-        <RouterLink class="link" :to="`/employee/${employee.id}/update`"><font-awesome-icon icon="fa-solid fa-pen-to-square" /></RouterLink>
-        <RouterLink class="link" :to="`/employee/${employee.id}`"><font-awesome-icon icon="fa-solid fa-circle-info" /></RouterLink>
     </div>
 </template>
 

@@ -1,5 +1,6 @@
 from rest_framework.permissions import BasePermission
 
+
 class IsOwner(BasePermission):
 
     # checks if the user is the owner of the company

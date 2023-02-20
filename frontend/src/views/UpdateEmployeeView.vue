@@ -1,11 +1,14 @@
 <script setup lang="ts">
     import { ref, reactive, onMounted } from 'vue'
     import { useCompanyStore } from '@/stores/company';
+    import { useLoaderStore } from '@/stores/loader';
+    import { toast } from 'vue3-toastify';
     import axios from 'axios';
     import router from '@/router';
 
     // components
     import BackButton from '@/components/BackButton.vue';
+    import DeleteEmployeeConfrime from '@/components/DeleteEmployeeConfrime.vue';
 
     // interfaces
     interface Employee {
@@ -21,6 +24,7 @@
 
     //stores
     const companyStore = useCompanyStore()
+    const loaderStore = useLoaderStore()
 
     const employee = ref({})
 
@@ -36,12 +40,16 @@
 
     const errors = reactive(Array())
 
+    const loaded = ref(false)
+
     // gets the employee from the backend
-    const getEmployee = ():void => {
+    const getEmployee = async () => {
         const empId = router.currentRoute.value.params.empId
         const compId = companyStore.company.id
+        
+        loaderStore.setIsLoading()
 
-        axios
+        await axios
             .get(`/api/employee/${compId}/${empId}/`)
             .then(response => {
                 employee.value = response.data
@@ -51,6 +59,9 @@
             .catch(error => {
                 router.push('/not-found')
             })
+        
+        loaded.value = true
+        loaderStore.setIsLoading()
     }
 
     // initialize the vars with the employee values
@@ -75,6 +86,7 @@
         }
     }
 
+    // formats the date to the correct form
     const formatDate = (date:Date) => {
         const year = date.getFullYear();
         const month = date.getMonth() + 1;
@@ -83,6 +95,7 @@
         return `${year}-${month < 10 ? '0' + month : month}-${day < 10 ? '0' + day : day}`;
     }
 
+    // gets the selected image from the backend
     const getImage = (employee:any) => {
         axios
             .get(imageUrl.value, {
@@ -116,7 +129,7 @@
                 }
             })
             .then(response => {
-                
+                toast.success(`${employee.first_name} ${employee.last_name} updated`, { autoClose: 3000 })
             })
             .catch(error => {
                 if (error.response) {
@@ -144,18 +157,18 @@
     <div>
         <h1 class="text-lg text-center font-semibold">Update Employee</h1>
 
-        <div class="flex justify-center border p-3 mt-3 rounded-md">
+        <div class="flex justify-center md:border p-3 mt-3 rounded-md">
             <div>
                 <form @submit.prevent="updateEmployee" enctype="multipart/form-data" method="POST">   	
-                    <input type="text" class="input w-96 mb-3" required placeholder="Firstname *" v-model="firstname"/> <br/>
-                    <input type="text" class="input w-96 mb-3" required placeholder="Lastname *" v-model="lastname"/> <br/>
-                    <input type="text" class="input w-96 mb-3" required placeholder="Department *" v-model="departemnt"/> <br/>
-                    <input type="number" class="input w-96 mb-3" required placeholder="Salary per hour * " v-model="salaryPerHour"/> <br/>
-                    <input type="number" class="input w-96 mb-3" required placeholder="Hours per week *" v-model="hoursPerWeek"/>
+                    <input type="text" class="input w-80 mb-3 md:w-96" required placeholder="Firstname *" v-model="firstname"/> <br/>
+                    <input type="text" class="input w-80 mb-3 md:w-96" required placeholder="Lastname *" v-model="lastname"/> <br/>
+                    <input type="text" class="input w-80 mb-3 md:w-96" required placeholder="Department *" v-model="departemnt"/> <br/>
+                    <input type="number" class="input w-80 mb-3 md:w-96" required placeholder="Salary per hour * " v-model="salaryPerHour"/> <br/>
+                    <input type="number" class="input w-80 mb-3 md:w-96" required placeholder="Hours per week *" v-model="hoursPerWeek"/>
                     
                     <div class="mb-3">
                         <label class="font-semibold">Birthday *</label> <br/>
-                        <input type="date" class="w-96 rounded-md bg-gray-700" v-model="birthday">
+                        <input type="date" class="w-80 md:w-96 rounded-md bg-gray-700" v-model="birthday">
                     </div>
                     
                     <p><span class="font-semibold">Current image:</span> {{ getImageName }}</p>
@@ -167,6 +180,8 @@
 
                     <button class="bg-green-500 p-3 rounded-md w-full mt-3"><font-awesome-icon icon="fa-solid fa-pen-to-square" /> Update</button>
                 </form>
+
+                <DeleteEmployeeConfrime :employee="employee" v-if="loaded"/>
             </div>
         </div>
 

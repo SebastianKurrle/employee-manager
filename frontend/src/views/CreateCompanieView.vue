@@ -1,6 +1,10 @@
 <script setup lang="ts">
     import { ref, reactive } from 'vue'
+    import { toast } from 'vue3-toastify';
     import axios from 'axios';
+
+    // components
+    import BackButton from '@/components/BackButton.vue';
 
     // for the company
     const compName = ref('')
@@ -25,7 +29,7 @@
         axios
             .post('/api/company/create/', comp)
             .then(response => {
-                
+                toast.success('Company created', { autoClose: 3000 })
             })
             .catch(error => {
                 if (error.response) {
@@ -48,11 +52,11 @@
     <div>
         <h5 class="text-lg font-semibold text-center">Create Company</h5>
 
-        <div class="flex justify-center border p-3 mt-3 rounded-md">
+        <div class="flex justify-center md:border p-3 mt-3 rounded-md">
             <div>
                 <form @submit.prevent="createCompany">
-                    <input type="text" class="input w-96 mb-3" required placeholder="Company Name" v-model="compName"/> <br/>
-                    <textarea class="input w-96 mb-3" cols="30" required rows="10" placeholder="Description" v-model="compDesc"></textarea> <br/>
+                    <input type="text" class="input w-80 mb-3 md:w-96" required placeholder="Company Name" v-model="compName"/> <br/>
+                    <textarea class="input w-80 mb-3 md:w-96" cols="30" required rows="10" placeholder="Description" v-model="compDesc"></textarea> <br/>
 
                     <div class="bg-red-500 text-white rounded p-3 mb-3" v-if="errors.length">
                         <p v-for="error in errors">{{ error }}</p>
@@ -62,6 +66,8 @@
                 </form>
             </div>
         </div>
+
+        <BackButton url="/companies"/>
     </div>
 </template>
 
