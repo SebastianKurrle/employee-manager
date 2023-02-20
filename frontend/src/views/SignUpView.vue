@@ -63,17 +63,17 @@
         <div class="flex justify-center mt-3">
             <div>
                 <form @submit.prevent="signUp">
-                    <input type="text" required class="input w-96 mb-3" placeholder="Username" v-model="username">
+                    <input type="text" required class="input w-80 mb-3 md:w-96" placeholder="Username" v-model="username">
                     <br/>
-                    <input type="text" required class="input w-96 mb-3" placeholder="First name" v-model="firstName">
+                    <input type="text" required class="input w-80 mb-3 md:w-96" placeholder="First name" v-model="firstName">
                     <br/>
-                    <input type="text" required class="input w-96 mb-3" placeholder="Lastname" v-model="lastName">
+                    <input type="text" required class="input w-80 mb-3 md:w-96" placeholder="Lastname" v-model="lastName">
                     <br/>
-                    <input type="email" required class="input w-96 mb-3" placeholder="Email" v-model="email">
+                    <input type="email" required class="input w-80 mb-3 md:w-96" placeholder="Email" v-model="email">
                     <br/>
-                    <input type="password" required class="input w-96 mb-3" placeholder="Password" v-model="password">
+                    <input type="password" required class="input w-80 mb-3 md:w-96" placeholder="Password" v-model="password">
                     <br/>
-                    <input type="password" required class="input w-96 mb-3" placeholder="Password Again" v-model="password2">
+                    <input type="password" required class="input w-80 mb-3 md:w-96" placeholder="Password Again" v-model="password2">
 
                     <br/>
 
@@ -81,7 +81,7 @@
                         <p v-for="error in errors">{{ error }}</p>
                     </div>
 
-                    <button class="bg-green-600 rounded-lg p-3 w-96 hover:scale-110 duration-200 mb-2">Sign Up</button> <br/>
+                    <button class="bg-green-600 rounded-lg p-3 w-80 hover:scale-110 duration-200 mb-2 md:w-96">Sign Up</button> <br/>
 
                     Already have na account? <RouterLink to="/sign-in" class="text-blue-700 underline">Sing In</RouterLink>
                 </form>

@@ -14,7 +14,10 @@
     const hoursPerWeekFilter = ref()
     const departmentFilter = ref()
 
+    const closeModal = ref()
+
     const filterEmployees = () => {
+        checkInputs()
         const filter:object = {
             first_name: firstNameFilter.value,
             last_name: lastNameFilter.value,
@@ -27,10 +30,32 @@
             .post(`/api/employee/filter/${companyStore.company.id}/`, filter)
             .then(response => {
               filterEmployeeStore.setFiltertEmployees(response.data)
+
+              closeModal.value.click()
             })
             .catch(error => {
               console.log(error)
             })
+    }
+
+    const checkInputs = () => {
+        if (salaryPerHourFilter.value === '') {
+            salaryPerHourFilter.value = undefined
+        }
+
+        if (hoursPerWeekFilter.value === '') {
+            hoursPerWeekFilter.value = undefined
+        }
+    }
+
+    const clearFilter = () => {
+        firstNameFilter.value = undefined
+        lastNameFilter.value = undefined
+        salaryPerHourFilter.value = undefined
+        hoursPerWeekFilter.value = undefined
+        departmentFilter.value = undefined
+
+        filterEmployeeStore.clearFilter()
     }
 </script>
 
@@ -45,6 +70,7 @@
                         class="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md">
                         <h5 class="text-xl font-medium leading-normal text-gray-800" id="exampleModalLabel">Filter employees</h5>
                         <button type="button"
+                            ref="closeModal"
                             class="btn-close box-content w-4 h-4 p-1 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline"
                             data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
@@ -185,8 +211,12 @@
                             />
                         </div>
 
-                        <button class="bg-green-700 rounded-md p-3">Filter</button>
+                        <div class="text-white">
+                          <button class="bg-green-700 rounded-md p-3 w-28 hover:bg-green-500">Filter</button>
+                        </div>
                       </form>
+
+                      <button class="bg-blue-800 p-3 rounded-md text-white mt-3 hover:bg-blue-600 w-28" @click="clearFilter">Clear filter</button>
                     </div>
                     <div
                         class="modal-footer flex flex-shrink-0 flex-wrap items-center justify-end p-4 border-t border-gray-200 rounded-b-md">

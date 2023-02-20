@@ -3,6 +3,7 @@
     import { useCompanyStore } from '@/stores/company';
     import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue'
     import { ExclamationTriangleIcon } from '@heroicons/vue/24/outline'
+    import { toast } from 'vue3-toastify';
     import axios from 'axios';
     import router from '@/router';
 
@@ -20,6 +21,7 @@
         axios
             .delete(`/api/employee/detail/${employee.value.id}/`)
             .then(response => {
+                toast.error('Employee deleted', { autoClose: 3000 })
                 if (response.status == 204) {
                     router.push(`${companyStore.company.get_absolute_url}/manage-employees`)
                 }

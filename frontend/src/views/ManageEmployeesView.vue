@@ -32,7 +32,6 @@
     }
 
     const employees = reactive(Array<Employee>())
-    const filtertEmployees = reactive(Array<Employee>())
 
     const getEmployees = async () => {
         loaderStore.setIsLoading()
@@ -57,6 +56,7 @@
             router.push('/companies')
         } else {
             getEmployees()
+            filterEmployeeStore.clearFilter()
         }
     })
 </script>
@@ -74,9 +74,7 @@
         <div v-if="filterEmployeeStore.isFiltert">
             <h5 class="text-lg text-center font-semibold">Filter results</h5>
 
-            <button class="bg-blue-800 p-3 rounded-md hover:bg-blue-600" @click="filterEmployeeStore.clearFilter">Clear filter</button>
-
-            <div class="flex justify-center mt-3">
+            <div class="flex justify-center mt-3 mb-3">
                 <div class="grid lg:grid-cols-3 md:grid-cols-2 gap-2">
                     <EmployeeCard v-for="emp in filterEmployeeStore.filtertEmployees" :employee="emp" :key="Number(emp.id)"/>
                 </div>

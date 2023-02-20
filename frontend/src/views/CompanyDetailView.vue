@@ -57,7 +57,7 @@
 
 <template>
     <div>
-        <h1 class="text-3xl text-center font-semibold">{{ company.name }}</h1>
+        <h1 class="text-xl md:text-3xl text-center font-semibold">{{ company.name }}</h1>
 
         <div class="bg-gray-700 p-3 mt-3">
             <h4 class="text-lg text-center font-semibold">Overview</h4>
