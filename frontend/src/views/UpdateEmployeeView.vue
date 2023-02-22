@@ -53,12 +53,12 @@
             .get(`/api/employee/${compId}/${empId}/`)
             .then(response => {
                 employee.value = response.data
-
                 initVars(employee.value)
             })
             .catch(error => {
                 router.push('/not-found')
             })
+        
         
         loaded.value = true
         loaderStore.setIsLoading()
@@ -74,15 +74,13 @@
         birthday.value = employee.birthday
         imageUrl.value = employee.get_image
         getImageName.value = employee.get_image_name
-        
-        getImage(employee)
     }
 
     const setImage = (event:any) => {
         if (event.target.files.length > 0) {
             image.value = event.target.files[0]
         } else {
-            image.value = ''
+            image.value = {}
         }
     }
 
@@ -96,15 +94,18 @@
     }
 
     // gets the selected image from the backend
-    const getImage = (employee:any) => {
-        axios
-            .get(imageUrl.value, {
-                responseType: 'blob'
-            })
-            .then(response => {
-                image.value = new File([response.data], String(employee.image))
-            })
-    }
+    // const getImage = (employee:any) => {
+    //     axios
+    //         .get(employee.get_image, {
+    //             responseType: 'blob'
+    //         })
+    //         .then(response => {
+    //             image.value = new File([response.data], String(employee.image))
+    //         })
+    //         .catch(error => {
+    //             console.log(error)
+    //         })
+    // }
 
     // to update the employee
     const updateEmployee = () => {
@@ -112,8 +113,8 @@
             first_name:firstname.value,
             last_name:lastname.value,
             department:departemnt.value,
-            salary_per_hour:salaryPerHour.value,
-            hours_per_week:hoursPerWeek.value,
+            salary_per_hour:Number(salaryPerHour.value),
+            hours_per_week:Number(hoursPerWeek.value),
             birthday:formatDate(new Date(birthday.value)),
             image:image.value,
             company:companyStore.company.id

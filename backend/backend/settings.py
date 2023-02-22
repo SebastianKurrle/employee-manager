@@ -26,6 +26,7 @@ SECRET_KEY = 'django-insecure-yjidk6e!$(7_$t7l4yx_8o^&o)1cnc98!rrzzfn7nb44dlrb&%
 DEBUG = True
 
 ALLOWED_HOSTS = [
+    'apiempmng.sebastiankurrle-projects.de',
 ]
 
 
@@ -49,7 +50,7 @@ INSTALLED_APPS = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    'http://localhost:5173',
+    'https://employee-manager.sebastiankurrle-projects.de',
 ]
 
 MIDDLEWARE = [
@@ -89,8 +90,11 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'employee_manager',
+        'USER': 'employeemng',
+        'HOST': 'localhost',
+        'PORT': ''
     }
 }
 

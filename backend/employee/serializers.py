@@ -44,3 +44,20 @@ class EmployeeSerializer(ModelSerializer):
             employee.save()
 
         return employee
+
+    def update(self, instance, validated_data):
+        instance.first_name = validated_data.get('first_name')
+        instance.last_name = validated_data.get('last_name')
+        instance.birthday = validated_data.get('birthday')
+        instance.department = validated_data.get('department')
+        instance.hours_per_week = validated_data.get('hours_per_week')
+        instance.salary_per_hour = validated_data.get('salary_per_hour')
+        instance.image = instance.image
+
+        if validated_data.get('image'):
+            instance.image = validated_data.get('image')
+
+        instance.save()
+
+        return instance
+
