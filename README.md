@@ -13,7 +13,7 @@
 
 ## Sinn der Webapp
 
-Wenn Sie leiter einer großen Firma sind kann man schnell einmal den Überblick über seine Mitarbeiter durch diese Webapp
+Wenn Sie leiter einer großen Firma sind kann man schnell einmal den Überblick über seine Mitarbeiter verlieren, durch diese Webapp
 kann man sich eine Firma erstellen und Mitarbeiter anlegen sowie auch updaten und aktuelle Daten auslesen. Es ist auch sehr einfach
 nach Mitarbeiter zu suchen dank der eingebauten filter Option. Ebenfalls kann für jeden Mitarbeiter ein Profilbild angelegt werden
 
