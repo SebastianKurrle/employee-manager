@@ -6,7 +6,7 @@
 - Knox Authentication Token
 
 **Frontend**
-- Vite als built tool
+- Vite als build tool
 - VueJs
 - Axios für die Kommunikation zum Backend
 - Tailwindcss für das Design
