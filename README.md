@@ -1,21 +1,29 @@
-# Mitarbeiter Manager
+# Employee Manager App
 
-## Technologisches
-**Backend**
-- Django rest framework
-- Knox Authentication Token
+Welcome to the Employee Manager App repository. This application is designed to assist you in efficiently managing employee data. Whether you're a small business or a large enterprise, our app provides the tools you need for streamlined employee management.
 
-**Frontend**
-- Vite als build tool
-- VueJs
-- Axios für die Kommunikation zum Backend
-- Tailwindcss für das Design
+## Features
 
-## Sinn der Webapp
+- **Employee Information:** Store and access essential employee details.
+- **Search and Filter:** Quickly find specific employee information using search and filter options.
+- **User-Friendly Interface:** Intuitive design for easy navigation and data input.
+- **Role-based Access:** Control access to information based on user roles.
 
-Wenn Sie leiter einer großen Firma sind kann man schnell einmal den Überblick über seine Mitarbeiter verlieren, durch diese Webapp
-kann man sich eine Firma erstellen und Mitarbeiter anlegen sowie auch updaten und aktuelle Daten auslesen. Es ist auch sehr einfach
-nach Mitarbeiter zu suchen dank der eingebauten filter Option. Ebenfalls kann für jeden Mitarbeiter ein Profilbild angelegt werden
+## Usage
 
-**Link zur seite:**
-https://employee-manager.sebastiankurrle-projects.de
+### Add Employee:
+
+1. Navigate to the app and click on the "Add Employee" button.
+2. Fill in the required details and save the information.
+
+### Search and Filter:
+
+- Use the search bar to find a specific employee.
+- Apply filters to narrow down the displayed information.
+
+### Access Control:
+
+Adjust user roles to control access to sensitive information.
+
+## Link
+https://employee-manager.sebastiankurrle-projects.de/
